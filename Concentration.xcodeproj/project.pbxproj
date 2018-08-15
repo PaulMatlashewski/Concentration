@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073039CD2122514C00A17819 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073039CC2122514C00A17819 /* Theme.swift */; };
 		0749F1CE211FE5FB0059402C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749F1CD211FE5FB0059402C /* AppDelegate.swift */; };
 		0749F1D0211FE5FB0059402C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749F1CF211FE5FB0059402C /* ViewController.swift */; };
 		0749F1D3211FE5FB0059402C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0749F1D1211FE5FB0059402C /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		073039CC2122514C00A17819 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0749F1CA211FE5FB0059402C /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0749F1CD211FE5FB0059402C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0749F1CF211FE5FB0059402C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				0749F1CF211FE5FB0059402C /* ViewController.swift */,
 				0749F1DF211FE86D0059402C /* Concentration.swift */,
 				0749F1D1211FE5FB0059402C /* Main.storyboard */,
+				073039CC2122514C00A17819 /* Theme.swift */,
 				0749F1E1211FEAA80059402C /* Card.swift */,
 				0749F1D4211FE5FC0059402C /* Assets.xcassets */,
 				0749F1D6211FE5FC0059402C /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				0749F1D0211FE5FB0059402C /* ViewController.swift in Sources */,
 				0749F1CE211FE5FB0059402C /* AppDelegate.swift in Sources */,
+				073039CD2122514C00A17819 /* Theme.swift in Sources */,
 				0749F1E0211FE86D0059402C /* Concentration.swift in Sources */,
 				0749F1E2211FEAA80059402C /* Card.swift in Sources */,
 			);

@@ -11,6 +11,9 @@ import Foundation
 class Concentration
 {
     private(set) var cards = [Card]()
+    private(set) var score = 0
+    private var visitedCardIndices = [Int]()
+    
     var indexOfOneAndOnlyFaceFaceUpCard: Int? {
         get {
             var foundIndex: Int?
@@ -32,6 +35,15 @@ class Concentration
         }
     }
     
+    private func shuffleCards() {
+        var randomCards = [Card]()
+        for _ in 0..<cards.count {
+            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
+            randomCards.append(cards.remove(at: randomIndex))
+        }
+        cards = randomCards
+    }
+    
     func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
         if !cards[index].isMatched {
@@ -40,6 +52,23 @@ class Concentration
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    score += 2
+                } else if visitedCardIndices.contains(index) && visitedCardIndices.contains(matchIndex) {
+                    // Both cards selected have previously been visited so a double
+                    // penaly is incurred
+                    score -= 2
+                } else if visitedCardIndices.contains(index) || visitedCardIndices.contains(matchIndex) {
+                    // A single card selected has previously been selected
+                    score -= 1
+                } else {
+                    // This is a mismatch and the first time this card has been selected.
+                    // Remember the card to penalize the player in case it is selected again.
+                    if !visitedCardIndices.contains(index) {
+                        visitedCardIndices.append(index)
+                    }
+                    if !visitedCardIndices.contains(matchIndex) {
+                        visitedCardIndices.append(matchIndex)
+                    }
                 }
                 cards[index].isFaceUp = true
             } else {
@@ -47,6 +76,17 @@ class Concentration
                 indexOfOneAndOnlyFaceFaceUpCard = index
             }
         }
+    }
+    
+    // Start a new game by turning all cards face down, removing matches, and shuffling
+    func newGame() {
+        score = 0
+        visitedCardIndices = [Int]()
+        for index in cards.indices {
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
+        shuffleCards()
     }
     
     init(numberOfCardPairs: Int) {
@@ -58,11 +98,6 @@ class Concentration
         }
         
         // Shuffle the cards
-        var randomCards = [Card]()
-        for _ in 0..<cards.count {
-            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
-            randomCards.append(cards.remove(at: randomIndex))
-        }
-        cards = randomCards
+        shuffleCards()
     }
 }
